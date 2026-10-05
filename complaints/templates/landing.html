@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart University Complaint & Feedback System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/landing.css' %}">
+</head>
+
+<body>
+
+    {% include 'includes/navbar.html' with active='home' %}
+
+    <section class="hero">
+        <h1>
+            Smart University<br>
+            <span>Complaint & Feedback</span><br>
+            Management System
+        </h1>
+        <p>
+            A high-performance digital bridge between students and administration.
+            Submit, track, and resolve your concerns through a completely
+            automated and transparent portal.
+        </p>
+        <a href="#" class="btn">GET STARTED NOW</a>
+    </section>
+
+</body>
+</html>

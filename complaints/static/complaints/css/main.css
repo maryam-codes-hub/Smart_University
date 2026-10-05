@@ -1,0 +1,19 @@
+*{ margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Poppins', sans-serif; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background: #e8edf4;
+    padding: 0 90px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 30px; font-weight: 700; color: #0b2d5c; }
+.logo span { color: #f39c12; }
+
+.nav-links { display: flex; gap: 40px; }
+.nav-links a { text-decoration: none; color: #555; font-size: 18px; }
+.nav-links a.active { font-weight: 600; color: #333; }
