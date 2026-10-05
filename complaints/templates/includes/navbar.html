@@ -2,7 +2,9 @@
     <div class="logo">Smart <span>University</span></div>
     <div class="nav-links">
         <a href="{% url 'landing' %}" class="{% if active == 'home' %}active{% endif %}">Home</a>
-        <a href="#">Services</a>
+        
+        <a href="{% url 'services' %}" class="{% if active == 'services' %}active{% endif %}">Services</a>
+
         <a href="{% url 'about' %}" class="{% if active == 'about' %}active{% endif %}">About</a>
         <a href="#">Contact</a>
     </div>
