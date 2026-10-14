@@ -29,7 +29,7 @@
     </section>
 
     <!-- SERVICES -->
-<section id="services" class="section section-light">
+    <section id="services" class="section section-light">
     <div class="container">
         <span class="eyebrow">What we offer</span>
         <h2 class="section-title">Our <span>Services</span></h2>
@@ -68,12 +68,14 @@
                 <p>Administrators view all complaints, update their status and review student feedback in one place.</p>
             </div>
         </div>
-    </div>
-</section>
+    </div> 
+    </section>
 
     <!-- ABOUT -->
-     <section id="about" class="section"></section> 
-    <h2 class="section-title">About <span>Us</span></h2>
+    <section id="about" class="section section-light">
+    <div class="container">
+        <span class="eyebrow">Who we are</span>
+        <h2 class="section-title">About <span>Us</span></h2>
         <p class="section-sub">A transparent bridge between students and administration.</p>
 
         <div class="about-grid">
@@ -95,11 +97,12 @@
                 <div class="step"><span class="step-no">3</span><div><h4>Resolve</h4><p>Complaint is resolved and the student gives feedback.</p></div></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
-         <!-- CONTACT -->
-<section id="contact" class="section section-dark">
+    <!-- CONTACT -->
+    <section id="contact" class="section section-dark">
     <div class="container">
         <span class="eyebrow eyebrow-light">Get in touch</span>
         <h2 class="section-title">Contact <span>Us</span></h2>
@@ -130,17 +133,15 @@
                 </div>
             </div>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); this.reset(); alert('Thank you! This form will be connected to Django later.');">
-                 {% csrf_token %}
-                <h3>Send us a message</h3>
-                <input type="text" placeholder="Your name" required>
-                <input type="email" placeholder="Your email" required>
-                <input type="text" name="subject" placeholder="subject" required>
-
-                <textarea rows="5" placeholder="Your message" required></textarea>
-                <button type="submit" class="btn-orange">SEND MESSAGE</button>
-            </form>
-
+    <form class="contact-form" method="post" action="{% url 'contact' %}">
+    {% csrf_token %}
+    <h3>Send us a message</h3>
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+  
+    <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+    <button type="submit" class="btn-orange">SEND MESSAGE</button>
+</form>
         </div>
     </div>
 </section>

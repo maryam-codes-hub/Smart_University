@@ -10,26 +10,20 @@ def about(request):
 def services(request):
     return render(request,'services.html')
 def contact(request):
-    context = {}
-
-    if 'name' in request.POST:
+    if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
+        
         message = request.POST.get('message')
 
-        context = {
-            'submitted': True,
-            'name': name,
-            'email': email,
-            'subject': subject,
-            'message': message,
-        }
+        print(name, email, message)
 
-        print(name, email, subject, message)
-        messages.success(request, f'Thank you, {name}! We received your message and will reply to {email} soon.')
-        return redirect('contact')
+       
+        return redirect('thankyou')
 
-    return render(request, 'contact.html', context)
+    return render(request, 'contact.html')
+
+def thankyou(request):
+    return render(request, 'thankyou.html')
 
 
