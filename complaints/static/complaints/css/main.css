@@ -17,3 +17,9 @@ body { font-family: 'Poppins', sans-serif; }
 .nav-links { display: flex; gap: 40px; }
 .nav-links a { text-decoration: none; color: #555; font-size: 18px; }
 .nav-links a.active { font-weight: 600; color: #333; }
+
+html { scroll-behavior: smooth; }
+
+.navbar { position: sticky; top: 0; z-index: 100; }
+
+section { scroll-margin-top: 110px; }

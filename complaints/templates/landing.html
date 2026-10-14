@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'complaints/css/landing.css' %}">
 </head>
-
 <body>
 
-    {% include 'includes/navbar.html' with active='home' %}
+    {% include 'includes/navbar.html' %}
 
-    <section class="hero">
+    <!-- HOME -->
+    <section id="home" class="hero">
         <h1>
             Smart University<br>
             <span>Complaint & Feedback</span><br>
@@ -25,8 +25,130 @@
             Submit, track, and resolve your concerns through a completely
             automated and transparent portal.
         </p>
-        <a href="#" class="btn">GET STARTED NOW</a>
+        <a href="#services" class="btn">GET STARTED NOW</a>
     </section>
 
+    <!-- SERVICES -->
+<section id="services" class="section section-light">
+    <div class="container">
+        <span class="eyebrow">What we offer</span>
+        <h2 class="section-title">Our <span>Services</span></h2>
+        <p class="section-sub">Everything you need to raise a concern and see it resolved.</p>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3>Submit Complaint</h3>
+                <p>Fill a simple form with a title and description. Your complaint is saved instantly as Pending.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>Track Status</h3>
+                <p>Follow your complaint from Pending to In Progress to Resolved, anytime from your dashboard.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3>Give Feedback</h3>
+                <p>Once your complaint is resolved, share your feedback to help improve university services.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Admin Management</h3>
+                <p>Administrators view all complaints, update their status and review student feedback in one place.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ABOUT -->
+     <section id="about" class="section"></section> 
+    <h2 class="section-title">About <span>Us</span></h2>
+        <p class="section-sub">A transparent bridge between students and administration.</p>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    The Smart University Complaint & Feedback Management System makes it easy
+                    for students to report problems and for the administration to resolve them
+                    in an organized way. No more lost applications or endless follow-ups.
+                </p>
+                <p>
+                    Every complaint is recorded, tracked and answered through one portal,
+                    so students always know where their concern stands.
+                </p>
+            </div>
+
+            <div class="steps">
+                <div class="step"><span class="step-no">1</span><div><h4>Submit</h4><p>Student submits a complaint.</p></div></div>
+                <div class="step"><span class="step-no">2</span><div><h4>Review</h4><p>Admin reviews it and updates the status.</p></div></div>
+                <div class="step"><span class="step-no">3</span><div><h4>Resolve</h4><p>Complaint is resolved and the student gives feedback.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+
+         <!-- CONTACT -->
+<section id="contact" class="section section-dark">
+    <div class="container">
+        <span class="eyebrow eyebrow-light">Get in touch</span>
+        <h2 class="section-title">Contact <span>Us</span></h2>
+        <p class="section-sub">Have a question? We would be happy to help.</p>
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div><h4>Address</h4><p>University of Sargodha, Sargodha, Punjab</p></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div><h4>Email</h4><p>support@university.edu</p></div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div><h4>Phone</h4><p>+92 300 0000000</p></div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); this.reset(); alert('Thank you! This form will be connected to Django later.');">
+                 {% csrf_token %}
+                <h3>Send us a message</h3>
+                <input type="text" placeholder="Your name" required>
+                <input type="email" placeholder="Your email" required>
+                <input type="text" name="subject" placeholder="subject" required>
+
+                <textarea rows="5" placeholder="Your message" required></textarea>
+                <button type="submit" class="btn-orange">SEND MESSAGE</button>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <p>© 2026 Smart University Complaint & Feedback Management System</p>
+    </footer>
+
+    <script src="{% static 'complaints/js/landing.js' %}"></script>
 </body>
 </html>
