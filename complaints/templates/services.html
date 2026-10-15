@@ -4,14 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/landing.css' %}">
 
     <title> Our Services</title>
 </head>
 <body>
-        {% include 'includes/navbar.html' with active='services' %}
-        <h1>welcome to Services</h1>
+        {% include 'includes/navbar.html'  %}
+         <!-- SERVICES -->
+    <section id="services" class="section section-light">
+    <div class="container">
+        <span class="eyebrow">What we offer</span>
+        <h2 class="section-title">Our <span>Services</span></h2>
+        <p class="section-sub">Everything you need to raise a concern and see it resolved.</p>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3>Submit Complaint</h3>
+                <p>Fill a simple form with a title and description. Your complaint is saved instantly as Pending.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>Track Status</h3>
+                <p>Follow your complaint from Pending to In Progress to Resolved, anytime from your dashboard.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3>Give Feedback</h3>
+                <p>Once your complaint is resolved, share your feedback to help improve university services.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Admin Management</h3>
+                <p>Administrators view all complaints, update their status and review student feedback in one place.</p>
+            </div>
+        </div>
+    </div> 
+    </section>
 
     
 </body>

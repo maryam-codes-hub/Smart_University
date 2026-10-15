@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from .models import ContactMessage
 
 def landing(request):
     return render(request,'landing.html')
@@ -16,7 +17,8 @@ def contact(request):
         
         message = request.POST.get('message')
 
-        print(name, email, message)
+        # print(name, email, message)
+        ContactMessage.objects.create(name=name, email=email, message=message)
 
        
         return redirect('thankyou')
