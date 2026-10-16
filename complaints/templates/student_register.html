@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register - Smart University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/auth.css' %}">
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-icon">🎓</div>
+        <h1>Student Portal</h1>
+        <p class="auth-sub">Complaint &amp; Feedback Management</p>
+
+        <div class="auth-tabs">
+            <a href="#" class="tab">Login</a>
+            <a href="{% url 'student_register' %}" class="tab active">Register</a>
+        </div>
+
+        {% for msg in messages %}
+            <div class="msg {{ msg.tags }}">{{ msg }}</div>
+        {% endfor %}
+
+        <form method="post" action="{% url 'student_register' %}">
+            {% csrf_token %}
+
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Your full name" required>
+
+            <label>University Email</label>
+            <input type="email" name="email" placeholder="name@university.edu" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="At least 8 characters" required>
+
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" placeholder="Re-enter password" required>
+
+            <button type="submit" class="auth-btn">CREATE ACCOUNT</button>
+        </form>
+
+        <a href="{% url 'landing' %}" class="back-link">← Back to Landing Page</a>
+    </div>
+
+</body>
+</html>
