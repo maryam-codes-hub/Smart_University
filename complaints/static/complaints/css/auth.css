@@ -90,3 +90,20 @@
 .msg { padding: 12px 16px; border-radius: 12px; margin-bottom: 8px; font-size: 14px; text-align: left; }
 .msg.error { background: #fde8e8; color: #a12626; }
 .msg.success { background: #e6f7ec; color: #1b6b3a; }
+
+.auth-card textarea {
+    width: 100%;
+    padding: 15px 18px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    outline: none;
+    resize: vertical;
+}
+.auth-card textarea::placeholder { color: #b5c9e6; }
+.auth-card textarea:focus { border-color: #f39c12; box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.25); }
+
+a.auth-btn { display: block; text-align: center; text-decoration: none; }

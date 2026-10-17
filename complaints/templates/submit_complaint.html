@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Complaint - Smart University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/auth.css' %}">
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-icon">📝</div>
+        <h1>Submit Complaint</h1>
+        <p class="auth-sub">Tell us what went wrong, we will look into it.</p>
+
+        {% for msg in messages %}
+             <div class="msg {{ msg.tags }}">{{ msg }}</div>
+        {% endfor %}
+     
+        <form method="post" action="{% url 'submit_complaint' %}">
+            {% csrf_token %}
+
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Short title of your complaint" maxlength="200" required>
+
+            <label>Description</label>
+            <textarea name="description" rows="6" placeholder="Describe your complaint in detail" required></textarea>
+
+            <button type="submit" class="auth-btn">SUBMIT COMPLAINT</button>
+        </form>
+
+        <a href="{% url 'student_dashboard' %}" class="back-link">← Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

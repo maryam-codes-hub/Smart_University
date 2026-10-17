@@ -14,7 +14,13 @@
         <div class="auth-icon">🎓</div>
         <h1>Welcome, {{ request.user.first_name }}!</h1>
         <p class="auth-sub">{{ request.user.email }}</p>
-        <p class="auth-sub" style="margin-top:20px;">Your dashboard will appear here soon.</p>
+
+
+        {% for msg in messages %}
+            <div class="msg {{ msg.tags }}">{{ msg }}</div>
+        {% endfor %}
+
+        <a href="{% url 'submit_complaint' %}" class="auth-btn">SUBMIT A COMPLAINT</a>
 
         <form method="post" action="{% url 'student_logout' %}">
             {% csrf_token %}

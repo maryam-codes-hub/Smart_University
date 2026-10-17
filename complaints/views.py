@@ -4,6 +4,7 @@ from .models import ContactMessage
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import ContactMessage, Complaint
 
 def landing(request):
     return render(request,'landing.html')
@@ -89,3 +90,28 @@ def student_logout(request):
     return redirect('landing')
 
 
+@login_required
+def submit_complaint(request):
+    if request.method == 'POST':
+        title = request.POST.get('title').strip()
+        description = request.POST.get('description').strip()
+        if not title or not description:
+            messages.error(request, 'Please fill in both title and description.')
+            return redirect('submit_complaint')
+
+        if len(title) > 200:
+            messages.error(request, 'Title must be 200 characters or less.')
+            return redirect('submit_complaint')
+        
+
+        Complaint.objects.create(
+            student=request.user,
+            title=title,
+            description=description,
+        )
+           
+        messages.success(request, 'Complaint submitted successfully! Status: Pending.')
+        return redirect('student_dashboard')
+
+
+    return render(request, 'submit_complaint.html')
