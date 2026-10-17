@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard - Smart University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/auth.css' %}">
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-icon">🎓</div>
+        <h1>Welcome, {{ request.user.first_name }}!</h1>
+        <p class="auth-sub">{{ request.user.email }}</p>
+        <p class="auth-sub" style="margin-top:20px;">Your dashboard will appear here soon.</p>
+
+        <form method="post" action="{% url 'student_logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="auth-btn">LOGOUT</button>
+        </form>
+    </div>
+
+</body>
+</html>

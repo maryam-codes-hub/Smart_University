@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Smart University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/auth.css' %}">
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-icon">🎓</div>
+        <h1>Student Portal</h1>
+        <p class="auth-sub">Complaint &amp; Feedback Management</p>
+
+        <div class="auth-tabs">
+            <a href="{% url 'student_login' %}" class="tab active">Login</a>
+            <a href="{% url 'student_register' %}" class="tab">Register</a>
+        </div>
+
+        {% for msg in messages %}
+            <div class="msg {{ msg.tags }}">{{ msg }}</div>
+        {% endfor %}
+
+        <form method="post" action="{% url 'student_login' %}">
+            {% csrf_token %}
+
+            <label>University Email</label>
+            <input type="email" name="email" placeholder="name@university.edu" required>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit" class="auth-btn">LOGIN SECURELY</button>
+        </form>
+
+        <a href="{% url 'landing' %}" class="back-link">← Back to Landing Page</a>
+    </div>
+
+</body>
+</html>

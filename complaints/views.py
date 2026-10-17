@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import ContactMessage
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def landing(request):
     return render(request,'landing.html')
@@ -56,9 +58,34 @@ def student_register(request):
             first_name=name,
         )
 
-        messages.success(request, 'Account created successfully!')
-        return redirect('student_register')
+        messages.success(request, 'Account created! Please login.')
+        return redirect('student_login')
 
     return render(request, 'student_register.html')
+
+def student_login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip().lower()
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('student_dashboard')
+
+        messages.error(request, 'Invalid email or password.')
+        return redirect('student_login')
+
+    return render(request, 'student_login.html')
+@login_required
+def student_dashboard(request):
+    return render(request, 'student_dashboard.html')
+
+
+def student_logout(request):
+    if request.method == 'POST':
+        logout(request)
+    return redirect('landing')
 
 
