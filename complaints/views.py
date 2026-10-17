@@ -136,3 +136,13 @@ def track_status(request):
 def complaint_detail(request, pk):
     complaint = get_object_or_404(Complaint, pk=pk, student=request.user)
     return render(request, 'complaint_detail.html', {'complaint': complaint})
+
+
+@login_required
+def give_feedback(request):
+    complaints = Complaint.objects.filter(
+        student=request.user,
+        status='resolved',
+        feedback__isnull=True,
+    )
+    return render(request, 'give_feedback.html', {'complaints': complaints})

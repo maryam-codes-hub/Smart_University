@@ -14,4 +14,5 @@ urlpatterns =[
     path('student/complaint/new/', views.submit_complaint, name='submit_complaint'),
     path('student/track/', views.track_status, name='track_status'),
     path('student/complaint/<int:pk>/', views.complaint_detail, name='complaint_detail'),
+    path('student/feedback/', views.give_feedback, name='give_feedback'),
 ]

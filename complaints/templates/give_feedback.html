@@ -1,0 +1,47 @@
+{% extends 'student_base.html' %}
+
+{% block title %}Give Feedback{% endblock %}
+
+{% block content %}
+
+    <div class="topbar">
+        <div>
+            <h1>Share Your Feedback</h1>
+            <p class="muted">Tell us how we did on your resolved complaints.</p>
+        </div>
+    </div>
+
+    <div class="panel narrow">
+        <div class="panel-head">
+            <h2>Resolution Feedback</h2>
+            <span class="panel-note">Only for Resolved Complaints</span>
+        </div>
+
+        {% if complaints %}
+            <form method="post" action="{% url 'give_feedback' %}" class="form-body">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label for="complaint">Select Resolved Complaint</label>
+                    <select name="complaint" id="complaint" required>
+                        <option value="">Choose a resolved complaint...</option>
+                        {% for c in complaints %}
+                            <option value="{{ c.id }}">#CMP-{{ c.id|stringformat:"04d" }} - {{ c.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="comment">Write Your Feedback</label>
+                    <textarea name="comment" id="comment" rows="6" placeholder="Tell us what you liked or how we can improve..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-green">Submit Feedback</button>
+                <p class="form-foot">Your feedback will be shared with the admin</p>
+            </form>
+        {% else %}
+            <p class="empty-note">You have no resolved complaints waiting for feedback.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

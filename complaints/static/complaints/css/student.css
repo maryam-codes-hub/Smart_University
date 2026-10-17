@@ -231,3 +231,44 @@
     margin-bottom: 10px;
 }
 .detail-body p { color: #374151; line-height: 1.8; margin-bottom: 10px; }
+
+
+.panel.narrow { max-width: 760px; }
+.panel-note { font-size: 13px; font-style: italic; color: #6b7280; }
+.form-body { padding: 28px 30px; }
+
+.field { margin-bottom: 24px; }
+.field label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.field select, .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #1f2937;
+    outline: none;
+}
+.field textarea { resize: vertical; }
+.field select:focus, .field textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.btn-green {
+    width: 100%;
+    padding: 15px;
+    background: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(22, 163, 74, 0.25);
+}
+.btn-green:hover { background: #15803d; }
+.form-foot { text-align: center; font-size: 12px; letter-spacing: 1px; color: #9ca3af; text-transform: uppercase; margin-top: 14px; }
+.empty-note { padding: 40px 30px; text-align: center; color: #6b7280; }

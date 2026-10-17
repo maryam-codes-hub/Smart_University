@@ -28,3 +28,12 @@ class Complaint(models.Model):
 
     def __str__(self):
      return f"{self.title} ({self.status})"
+
+
+class Feedback(models.Model):
+    complaint = models.OneToOneField(Complaint, on_delete=models.CASCADE, related_name='feedback')
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Feedback for {self.complaint.title}"
