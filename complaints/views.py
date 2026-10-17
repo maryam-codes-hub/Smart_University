@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import ContactMessage, Complaint
+from django.shortcuts import render, redirect, get_object_or_404
 
 def landing(request):
     return render(request,'landing.html')
@@ -129,3 +130,9 @@ def submit_complaint(request):
 def track_status(request):
     complaints = Complaint.objects.filter(student=request.user).order_by('-submission_date')
     return render(request, 'track_status.html', {'complaints': complaints})
+
+
+@login_required
+def complaint_detail(request, pk):
+    complaint = get_object_or_404(Complaint, pk=pk, student=request.user)
+    return render(request, 'complaint_detail.html', {'complaint': complaint})

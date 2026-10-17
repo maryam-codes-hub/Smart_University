@@ -1,0 +1,26 @@
+{% extends 'student_base.html' %}
+
+{% block title %}Complaint Details{% endblock %}
+
+{% block content %}
+
+    <div class="topbar">
+        <div>
+            <h1>Complaint #CMP-{{ complaint.id|stringformat:"04d" }}</h1>
+            <p class="muted">Submitted on {{ complaint.submission_date|date:"M d, Y" }}</p>
+        </div>
+        <a href="{% url 'track_status' %}" class="back-btn">← Back</a>
+    </div>
+
+    <div class="panel">
+        <div class="panel-head">
+            <h2>{{ complaint.title }}</h2>
+            <span class="badge badge-{{ complaint.status }}">{{ complaint.get_status_display }}</span>
+        </div>
+        <div class="detail-body">
+            <h3>Description</h3>
+            <div>{{ complaint.description|linebreaks }}</div>
+        </div>
+    </div>
+
+{% endblock %}

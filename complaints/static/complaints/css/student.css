@@ -206,3 +206,28 @@
 .badge-pending { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
 .badge-in_progress { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
 .badge-resolved { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+
+
+.eye-link { color: #2563eb; display: inline-flex; }
+.eye-link:hover { color: #1e3fae; }
+.table th:last-child, .table td:last-child { text-align: center; }
+
+.back-btn {
+    padding: 10px 20px;
+    background: white;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #1e3fae;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.detail-body { padding: 26px; }
+.detail-body h3 {
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+.detail-body p { color: #374151; line-height: 1.8; margin-bottom: 10px; }
