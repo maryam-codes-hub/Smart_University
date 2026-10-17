@@ -124,3 +124,8 @@ def submit_complaint(request):
 
 
     return render(request, 'submit_complaint.html')
+
+@login_required
+def track_status(request):
+    complaints = Complaint.objects.filter(student=request.user).order_by('-submission_date')
+    return render(request, 'track_status.html', {'complaints': complaints})

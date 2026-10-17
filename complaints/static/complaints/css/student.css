@@ -143,3 +143,66 @@
 @media (max-width: 800px) {
     .stats { grid-template-columns: 1fr; }
 }
+
+/* ---------- Panel + table ---------- */
+.panel {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 26px;
+    background: #eff6ff;
+    border-bottom: 1px solid #dbeafe;
+}
+.panel-head h2 { font-size: 18px; color: #1e3a8a; }
+.count-chip {
+    background: #bfdbfe;
+    color: #1e3a8a;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+}
+
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; }
+.table th {
+    text-align: left;
+    padding: 14px 26px;
+    background: #f3f4f6;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #4b5563;
+    text-transform: uppercase;
+}
+.table td {
+    padding: 20px 26px;
+    border-top: 1px solid #eef0f3;
+    font-size: 15px;
+    color: #4b5563;
+}
+.table .mono { font-family: Consolas, monospace; color: #9ca3af; }
+.table .subject { font-weight: 600; color: #1f2937; }
+.table .empty { text-align: center; padding: 40px; color: #9ca3af; }
+
+
+/* ---------- Status badges ---------- */
+.badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid;
+}
+.badge-pending { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
+.badge-in_progress { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+.badge-resolved { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
