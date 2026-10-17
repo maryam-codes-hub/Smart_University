@@ -1,32 +1,36 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Student Dashboard - Smart University</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'complaints/css/auth.css' %}">
-</head>
-<body class="auth-body">
+{% extends 'student_base.html' %}
 
-    <div class="auth-card">
-        <div class="auth-icon">🎓</div>
-        <h1>Welcome, {{ request.user.first_name }}!</h1>
-        <p class="auth-sub">{{ request.user.email }}</p>
+{% block title %}Dashboard{% endblock %}
 
+{% block content %}
 
-        {% for msg in messages %}
-            <div class="msg {{ msg.tags }}">{{ msg }}</div>
-        {% endfor %}
+    <div class="topbar">
+        <div>
+            <h1>Welcome, {{ request.user.first_name }}!</h1>
+            <p class="muted">{{ request.user.email }}</p>
+        </div>
 
-        <a href="{% url 'submit_complaint' %}" class="auth-btn">SUBMIT A COMPLAINT</a>
-
-        <form method="post" action="{% url 'student_logout' %}">
-            {% csrf_token %}
-            <button type="submit" class="auth-btn">LOGOUT</button>
-        </form>
+        <div class="user-pill">
+            <span>Status: Active</span>
+            <div class="avatar">{{ request.user.first_name|first|upper }}</div>
+        </div>
     </div>
 
-</body>
-</html>
+    <div class="stats">
+        <div class="stat-card blue">
+            <p class="stat-label">My Total Complaints</p>
+            <p class="stat-number">{{ total|stringformat:"02d" }}</p>
+        </div>
+
+        <div class="stat-card amber">
+            <p class="stat-label">In Progress</p>
+            <p class="stat-number">{{ in_progress|stringformat:"02d" }}</p>
+        </div>
+
+        <div class="stat-card green">
+            <p class="stat-label">Resolved Issues</p>
+            <p class="stat-number">{{ resolved|stringformat:"02d" }}</p>
+        </div>
+    </div>
+
+{% endblock %}

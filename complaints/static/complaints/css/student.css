@@ -1,0 +1,145 @@
+/* ---------- Layout ---------- */
+.layout { display: flex; min-height: 100vh; background: #f3f4f6; }
+
+.sidebar {
+    width: 270px;
+    flex-shrink: 0;
+    background: #1e3fae;
+    color: white;
+    padding: 34px 18px 28px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+.sidebar-logo {
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    padding: 0 12px;
+    margin-bottom: 40px;
+}
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 18px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.sidebar-nav a:hover { background: rgba(255, 255, 255, 0.1); }
+.sidebar-nav a.active {
+    background: #1d4ed8;
+    box-shadow: inset 4px 0 0 white;
+    font-weight: 600;
+}
+.ico { width: 20px; height: 20px; flex-shrink: 0; }
+
+.logout-form { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 22px; }
+.logout-form button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 12px 18px;
+    background: none;
+    border: none;
+    color: #fda4af;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.logout-form button:hover { color: #fecdd3; }
+
+/* ---------- Main area ---------- */
+.main { flex: 1; padding: 40px 45px; min-width: 0; }
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+.topbar h1 { font-size: 34px; font-weight: 700; color: #1f2937; }
+.muted { color: #6b7280; font-size: 15px; margin-top: 2px; }
+
+.user-pill {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    padding: 8px 10px 8px 22px;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e3fae;
+}
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #1e3fae;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- Messages ---------- */
+.msg { padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; font-size: 15px; }
+.msg.success { background: #e6f7ec; color: #1b6b3a; border: 1px solid #9fd8b2; }
+.msg.error { background: #fde8e8; color: #a12626; border: 1px solid #f3b5b5; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; padding: 20px 14px; }
+    .sidebar-logo { margin-bottom: 16px; }
+    .sidebar-nav { flex-direction: row; flex-wrap: wrap; }
+    .logout-form { border-top: none; padding-top: 10px; }
+    .main { padding: 24px 18px; }
+    .topbar { flex-direction: column; gap: 16px; }
+}
+/* ---------- Stat cards ---------- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 30px;
+}
+.stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 26px 20px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid;
+}
+.stat-card.blue { border-top-color: #2563eb; }
+.stat-card.amber { border-top-color: #eab308; }
+.stat-card.green { border-top-color: #22c55e; }
+
+.stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+.stat-number { font-size: 44px; font-weight: 700; line-height: 1.2; margin-top: 4px; }
+.blue .stat-number { color: #1e3a8a; }
+.amber .stat-number { color: #ca8a04; }
+.green .stat-number { color: #16a34a; }
+
+@media (max-width: 800px) {
+    .stats { grid-template-columns: 1fr; }
+}

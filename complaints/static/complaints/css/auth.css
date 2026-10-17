@@ -107,3 +107,26 @@
 .auth-card textarea:focus { border-color: #f39c12; box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.25); }
 
 a.auth-btn { display: block; text-align: center; text-decoration: none; }
+
+
+.dash-card { max-width: 720px; }
+
+.complaint-list { margin-top: 28px; text-align: left; }
+.complaint-list h2 { font-size: 20px; margin-bottom: 14px; }
+
+.complaint-item {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+}
+.complaint-item h3 { font-size: 17px; margin-bottom: 6px; }
+.complaint-item p { font-size: 14px; color: #d6e4f5; line-height: 1.6; }
+.complaint-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #ffd28a;
+}

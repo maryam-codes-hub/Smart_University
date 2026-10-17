@@ -79,9 +79,18 @@ def student_login(request):
         return redirect('student_login')
 
     return render(request, 'student_login.html')
+
 @login_required
 def student_dashboard(request):
-    return render(request, 'student_dashboard.html')
+    my_complaints = Complaint.objects.filter(student=request.user)
+
+    context = {
+        'total': my_complaints.count(),
+        'in_progress': my_complaints.filter(status='in_progress').count(),
+        'resolved': my_complaints.filter(status='resolved').count(),
+    }
+
+    return render(request, 'student_dashboard.html', context)
 
 
 def student_logout(request):

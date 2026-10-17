@@ -9,8 +9,8 @@ class ContactMessage(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-def __str__(self):
-    return f"{self.name} - {self.email}"
+    def __str__(self):
+      return f"{self.name} - {self.email}"
 
 
 class Complaint(models.Model):
@@ -26,5 +26,5 @@ class Complaint(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     submission_date = models.DateTimeField(auto_now_add=True)
 
-def __str__(self):
-    return f"{self.title} ({self.status})"
+    def __str__(self):
+     return f"{self.title} ({self.status})"
