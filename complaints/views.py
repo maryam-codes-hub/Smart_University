@@ -3,9 +3,9 @@ from django.contrib import messages
 from .models import ContactMessage
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from .models import ContactMessage, Complaint
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 def landing(request):
     return render(request,'landing.html')
@@ -150,3 +150,29 @@ def give_feedback(request):
 
 def choose_portal(request):
     return render(request, 'choose_portal.html')
+
+
+def admin_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None and user.is_staff:
+            login(request, user)
+            return redirect('admin_dashboard')
+
+        messages.error(request, 'Invalid credentials or not an admin account.')
+        return redirect('admin_login')
+
+    return render(request, 'admin_login.html')
+
+
+def is_admin(user):
+    return user.is_authenticated and user.is_staff
+
+
+@user_passes_test(is_admin, login_url='admin_login')
+def admin_dashboard(request):
+    return render(request, 'admin_dashboard.html')

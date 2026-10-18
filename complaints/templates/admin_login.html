@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Smart University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/auth.css' %}">
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-icon">🛡️</div>
+        <h1>Admin Portal</h1>
+        <p class="auth-sub">Management &amp; Resolution Control</p>
+
+        {% for msg in messages %}
+            <div class="msg {{ msg.tags }}">{{ msg }}</div>
+        {% endfor %}
+
+        <form method="post" action="{% url 'admin_login' %}">
+            {% csrf_token %}
+
+            <label>Username / Official Email</label>
+            <input type="text" name="username" placeholder="admin@university.edu" required>
+
+            <label>Security Password</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit" class="auth-btn">AUTHORIZE &amp; LOGIN</button>
+        </form>
+
+        <a href="{% url 'landing' %}" class="back-link">← Back to Landing Page</a>
+    </div>
+
+</body>
+</html>

@@ -16,4 +16,6 @@ urlpatterns =[
     path('student/complaint/<int:pk>/', views.complaint_detail, name='complaint_detail'),
     path('student/feedback/', views.give_feedback, name='give_feedback'),
     path('get-started/', views.choose_portal, name='choose_portal'),
+    path('admin-portal/login/', views.admin_login, name='admin_login'),
+    path('admin-portal/dashboard/', views.admin_dashboard, name='admin_dashboard'),
 ]
