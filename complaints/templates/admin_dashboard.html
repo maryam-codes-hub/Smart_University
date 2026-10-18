@@ -1,7 +1,41 @@
-<h1>Admin Dashboard</h1>
-<p>Welcome, {{ request.user.username }}</p>
+{% extends 'admin_base.html' %}
 
-<form method="post" action="{% url 'student_logout' %}">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+    <div class="topbar">
+        <div>
+            <h1>Admin Statistics</h1>
+            <p class="muted">Overview of all complaints in the system.</p>
+        </div>
+
+        <div class="user-pill">
+            <span>Admin: {{ request.user.username }}</span>
+            <div class="avatar">{{ request.user.username|first|upper }}</div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card dark">
+            <p class="stat-label">Total Complaints</p>
+            <p class="stat-number">{{ total }}</p>
+        </div>
+
+    <div class="stat-card amber">
+            <p class="stat-label">Pending</p>
+            <p class="stat-number">{{ pending }}</p>
+        </div>
+
+    <div class="stat-card blue">
+            <p class="stat-label">In Progress</p>
+            <p class="stat-number">{{ in_progress }}</p>
+        </div>
+
+    <div class="stat-card green">
+            <p class="stat-label">Resolved</p>
+            <p class="stat-number">{{ resolved }}</p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -176,3 +176,14 @@ def is_admin(user):
 @user_passes_test(is_admin, login_url='admin_login')
 def admin_dashboard(request):
     return render(request, 'admin_dashboard.html')
+
+
+@user_passes_test(is_admin, login_url='admin_login')
+def admin_dashboard(request):
+    context = {
+        'total': Complaint.objects.count(),
+        'pending': Complaint.objects.filter(status='pending').count(),
+        'in_progress': Complaint.objects.filter(status='in_progress').count(),
+        'resolved': Complaint.objects.filter(status='resolved').count(),
+    }
+    return render(request, 'admin_dashboard.html', context)

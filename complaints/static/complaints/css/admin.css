@@ -1,0 +1,23 @@
+.admin-side { background: #166534; }
+.admin-side .sidebar-nav a.active {
+    background: #16a34a;
+    box-shadow: inset 4px 0 0 white;
+}
+
+.admin-layout .user-pill { color: #166534; }
+.admin-layout .avatar { background: #dcfce7; color: #166534; }
+
+/* 4 cards ek qatar mein */
+.admin-layout .stats { grid-template-columns: repeat(4, 1fr); }
+
+/* Total card ka rang */
+.stat-card.dark { border-top-color: #374151; }
+.dark .stat-number { color: #111827; }
+
+/* Chhoti screens par */
+@media (max-width: 1000px) {
+    .admin-layout .stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .admin-layout .stats { grid-template-columns: 1fr; }
+}
