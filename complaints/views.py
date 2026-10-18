@@ -187,3 +187,33 @@ def admin_dashboard(request):
         'resolved': Complaint.objects.filter(status='resolved').count(),
     }
     return render(request, 'admin_dashboard.html', context)
+
+@user_passes_test(is_admin, login_url='admin_login')
+def admin_complaints(request):
+    complaints = Complaint.objects.select_related('student').order_by('-submission_date')
+
+    status = request.GET.get('status')
+    if status:
+        complaints = complaints.filter(status=status)
+
+    return render(request, 'admin_complaints.html', {
+        'complaints': complaints,
+        'current': status,
+        'status_choices': Complaint.STATUS_CHOICES,
+    }) 
+@user_passes_test(is_admin, login_url='admin_login')
+def update_status(request, pk):
+    if request.method == 'POST':
+        complaint = get_object_or_404(Complaint, pk=pk)
+        new_status = request.POST.get('status')
+
+        allowed = [value for value, label in Complaint.STATUS_CHOICES]
+
+        if new_status in allowed:
+            complaint.status = new_status
+            complaint.save()
+            messages.success(request, f'Complaint #CMP-{complaint.id:04d} marked as {complaint.get_status_display()}.')
+        else:
+            messages.error(request, 'Invalid status.')
+
+    return redirect('admin_complaints')

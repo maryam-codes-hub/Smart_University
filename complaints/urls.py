@@ -18,4 +18,6 @@ urlpatterns =[
     path('get-started/', views.choose_portal, name='choose_portal'),
     path('admin-portal/login/', views.admin_login, name='admin_login'),
     path('admin-portal/dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('admin-portal/complaints/', views.admin_complaints, name='admin_complaints'),
+    path('admin-portal/complaints/<int:pk>/status/', views.update_status, name='update_status'),
 ]

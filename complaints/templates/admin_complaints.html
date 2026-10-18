@@ -1,0 +1,82 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}Complaints{% endblock %}
+
+{% block content %}
+
+    <div class="topbar">
+        <div>
+            <h1>Complaints Management</h1>
+            <p class="muted">List of all complaints submitted by students</p>
+        </div>
+    </div>
+
+    <div class="filters admin-filters">
+        <a href="{% url 'admin_complaints' %}" class="{% if not current %}on{% endif %}">All Complaints</a>
+        <a href="?status=pending" class="{% if current == 'pending' %}on{% endif %}">Pending Only</a>
+        <a href="?status=in_progress" class="{% if current == 'in_progress' %}on{% endif %}">In Progress</a>
+    </div>
+
+    <div class="panel">
+        <div class="panel-head">
+            <h2>All Issues</h2>
+            <span class="count-chip">{{ complaints|length }} Complaints Found</span>
+        </div>
+
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Student</th>
+                        <th>Complaint</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in complaints %}
+                        <tr>
+                            <td class="mono">#CMP-{{ c.id|stringformat:"04d" }}</td>
+                            <td>
+                                <span class="subject">{{ c.student.first_name|default:c.student.username }}</span>
+                                <span class="cell-sub">{{ c.student.email }}</span>
+                            </td>
+                            <td>
+                                <span class="subject">{{ c.title }}</span>
+                                <span class="cell-sub">{{ c.description|truncatechars:60 }}</span>
+                            </td>
+                            <td>{{ c.submission_date|date:"d M, Y" }}</td>
+                            <td>
+                                <span class="badge badge-{{ c.status }}">
+                                    {{ c.get_status_display }}{% if c.status == 'resolved' %} ✓{% endif %}
+                                </span>
+                            </td>
+                            <td>
+    {% if c.status == 'resolved' %}
+        <span class="done-label">Completed</span>
+    {% else %}
+    <form method="post" action="{% url 'update_status' c.pk %}" class="status-form">
+            {% csrf_token %}
+            <select name="status">
+                {% for value, label in status_choices %}
+                    <option value="{{ value }}" {% if value == c.status %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="tick-btn" title="Update">✓</button>
+        </form>
+    {% endif %}
+</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" class="empty">No complaints found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
