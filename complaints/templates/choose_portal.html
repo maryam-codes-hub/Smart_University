@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Smart University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'complaints/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'complaints/css/portal.css' %}">
+</head>
+<body>
+
+    {% include 'includes/navbar.html' %}
+
+    <section class="portal-section">
+        <div class="portal-grid">
+
+            <div class="portal-card">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h2>Student Portal</h2>
+                <p>Lodge new complaints, monitor real-time status updates, and provide feedback on resolved issues.</p>
+                <a href="{% url 'student_login' %}" class="portal-btn student">LOGIN / REGISTER</a>
+            </div>
+
+            <div class="portal-card">
+                <div class="portal-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h2>Admin Portal</h2>
+                <p>Centralized control panel for management staff to track, update, and resolve academic and facility concerns.</p>
+                <a href="#" class="portal-btn admin">LOGIN / REGISTER</a>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

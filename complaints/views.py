@@ -146,3 +146,7 @@ def give_feedback(request):
         feedback__isnull=True,
     )
     return render(request, 'give_feedback.html', {'complaints': complaints})
+
+
+def choose_portal(request):
+    return render(request, 'choose_portal.html')
