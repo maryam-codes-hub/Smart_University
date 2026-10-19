@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import ContactMessage
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from .models import ContactMessage, Complaint
+from .models import ContactMessage, Complaint,Feedback
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -145,6 +145,26 @@ def give_feedback(request):
         status='resolved',
         feedback__isnull=True,
     )
+
+    if request.method == 'POST':
+        complaint_id = request.POST.get('complaint','')
+        comment = request.POST.get('comment').strip()
+
+        if not complaint_id.isdigit() or not comment:
+            messages.error(request, 'Please choose a complaint and write your feedback.')
+            return redirect('give_feedback')
+
+        complaint = complaints.filter(pk=complaint_id).first()
+
+        if not complaint_id or not comment:
+            messages.error(request, 'Please choose a complaint and write your feedback.')
+            return redirect('give_feedback')
+
+        complaint = get_object_or_404(Complaint, pk=complaint_id)
+        Feedback.objects.create(complaint=complaint, comment=comment)
+
+        messages.success(request, 'Thank you! Your feedback has been submitted.')
+        return redirect('give_feedback')
     return render(request, 'give_feedback.html', {'complaints': complaints})
 
 
@@ -217,3 +237,8 @@ def update_status(request, pk):
             messages.error(request, 'Invalid status.')
 
     return redirect('admin_complaints')
+
+@user_passes_test(is_admin, login_url='admin_login')
+def admin_feedbacks(request):
+    feedbacks = Feedback.objects.select_related('complaint__student').order_by('-created_at')
+    return render(request, 'admin_feedbacks.html', {'feedbacks': feedbacks})

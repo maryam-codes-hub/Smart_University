@@ -52,3 +52,4 @@
 }
 .tick-btn:hover { background: #15803d; }
 .done-label { color: #6b7280; font-size: 13px; font-weight: 600; }
+.quote { font-style: italic; color: #374151; max-width: 420px; line-height: 1.6; }
